@@ -8,6 +8,7 @@ window.function = function (str) {
   // extract the `.value`s and assign default
   // values.
   str = str.value ?? "";
+  str = str.replace(/\s/g, '');
   const numbers = str.match(/\d+/g).map(Number);
   const sum = numbers.reduce((acc, num) => acc + num, 0);
   // Your function should return the exact type
