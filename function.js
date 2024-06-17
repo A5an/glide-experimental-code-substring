@@ -7,14 +7,25 @@ window.function = function (str) {
   // or it's `undefined`.  This is a good place to
   // extract the `.value`s and assign default
   // values.
-  str = str.value ?? "";
-  str = str.replace(/\s/g, '');
-  const numbers = str.match(/\d+/g).map(Number);
-  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  text = str.value ?? "";
+  let [firstString, secondString] = text.split(':');
+
+  // Convert the strings to arrays
+  let firstArray = firstString.split(',');
+  let secondArray = secondString.split(',');
+  
+  let isIncluded = false;
+  
+  for (let element of firstArray) {
+      if (secondArray.includes(element)) {
+          isIncluded = true;
+          break;
+      }
+  }
   // Your function should return the exact type
   // you've declared for the `result` in
   // `glide.json`, or `undefined` if there's an
   // error or no result can be produced, because a
   // required input is `undefined`, for example.
-  return sum;
+  return isIncluded;
 };
